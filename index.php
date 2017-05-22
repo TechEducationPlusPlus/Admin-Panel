@@ -1,75 +1,58 @@
 <!DOCTYPE html>
 <html lang="en-us">
    <head>
-      <title>Datatables Alternative Editor</title>
-      
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/> 
-      <link rel="stylesheet" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css"/> 
-      <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.1.2/css/buttons.dataTables.min.css"/> 
-      <link rel="stylesheet" href="https://cdn.datatables.net/select/1.1.2/css/select.dataTables.min.css"/>
-      <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.0.2/css/responsive.dataTables.min.css"/> 
-      
-      <style>
-        table.dataTable tbody>tr.selected,
-        table.dataTable tbody>tr>.selected {
-          background-color: #A2D3F6;
-        }
-      </style>
+      <title>TechEdu++ data editor</title>
+     
+      <link rel="stylesheet" href="/ex/css/bootstrap.min.css"/> 
    </head>
    <body>
 
     <div class="container">
-      <br>
-      <table cellpadding="0" cellspacing="0" border="0" class="dataTable table table-striped" id="example">
-
-      </table>
-      <br>
+		<div class="row panel panel-primary">
+			<div class="panel-heading">
+				<h4>Ученическа система</h4>
+			</div>
+			<div class="row panel-body">
+				<div class="row">
+					<div class="col-md-2"> <a href="infocourse/?table=Trainers" class="btn btn-raised btn-primary">Trainers</a> </div>
+				</div>
+				<div class="row" style="height: 15px"> </div>
+				<div class="row">
+					<div class="col-md-2"> <a href="infocourse/?table=Comments" class="btn btn-raised btn-primary">Coomments</a> </div>
+					<div class="col-md-2"> <a href="infocourse/?table=Tracks" class="btn btn-raised btn-primary">Traks</a> </div>
+					<div class="col-md-2"> <a href="infocourse/?table=Seminars" class="btn btn-raised btn-primary">Seminars</a> </div>
+					<div class="col-md-2"> <a href="infocourse/?table=News" class="btn btn-raised btn-primary">News</a> </div>
+					<div class="col-md-2"> <a href="infocourse/?table=Courses" class="btn btn-raised btn-primary">Courses</a> </div>
+					<div class="col-md-2"> <a href="infocourse/?table=Videos" class="btn btn-raised btn-primary">Videos</a> </div>
+				</div>
+			</div>
+		</div>
+		<div class="row panel panel-primary">
+			<div class="panel-heading">
+				<h4>Тестваща система</h4>
+			</div>
+			<div class="row panel-body">
+				<div class="row">
+					<div class="col-md-2"> <a href="judge/?table=Users" class="btn btn-raised btn-primary">Users</a> </div>
+				</div>
+				<div class="row" style="height: 15px"> </div>
+				<div class="row">
+					<div class="col-md-2"> <a href="judge/?table=Contests" class="btn btn-raised btn-primary">Contests</a> </div>
+					<div class="col-md-2"> <a href="judge/?table=Tasks" class="btn btn-raised btn-primary">Tasks</a> </div>
+					<div class="col-md-2"> <a href="judge/?table=Submissions" class="btn btn-raised btn-primary">Submissions</a> </div>
+					<div class="col-md-2"> <a href="judge/?table=Quizes" class="btn btn-raised btn-primary">Quizes</a> </div>
+					<div class="col-md-2"> <a href="judge/?table=QuizesResults" class="btn btn-raised btn-primary">QuizesResults</a> </div>
+					<div class="col-md-2"> <a href="judge/?table=QuizesTasks" class="btn btn-raised btn-primary">QuizesTasks</a> </div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<a href="/logout.php" class="btn btn-raised btn-primary">Log out</a>
+		</div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
-    <script src="js/altEditor/dataTables.altEditor.free.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.1.2/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/select/1.1.2/js/dataTables.select.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.0.2/js/dataTables.responsive.min.js"></script>
-
-    <script>
-      $(document).ready(function() {
-
-		var dataSet = <?php include_once ("./get_table.php") ?>;
-
-		var columnDefs = <?php include_once ("./get_columns.php") ?>;
-
-        var myTable;
-
-        myTable = $('#example').DataTable({
-          "sPaginationType": "full_numbers",
-          data: dataSet,
-          columns: columnDefs,
-          dom: 'Bfrtip',        // Needs button container
-          select: 'single',
-          responsive: true,
-          altEditor: true,     // Enable altEditor
-          buttons: [{
-            text: 'Add',
-            name: 'add'        // do not change name
-          },
-          {
-            extend: 'selected', // Bind to Selected row
-            text: 'Edit',
-            name: 'edit'        // do not change name
-          },
-          {
-            extend: 'selected', // Bind to Selected row
-            text: 'Delete',
-            name: 'delete'      // do not change name
-         }]
-
-        });
-        
-      });
-    </script>
-
+    <script src="/ex/js/jquery-2.2.3.min.js"></script>
+    <script src="/ex/js/bootstrap.min.js"></script>
+	<?php include_once($_SERVER["DOCUMENT_ROOT"] . "/ss/check.php"); ?>
    </body>
 </html>
